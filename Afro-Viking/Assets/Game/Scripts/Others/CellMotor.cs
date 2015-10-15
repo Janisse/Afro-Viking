@@ -8,11 +8,14 @@ public class CellMotor : MonoBehaviour {
 	public float speed = 1f;
 	public bool CanSplit = true;
 	int currentJump = 0;
+
+	private Vector3 initialPosition = Vector3.zero;
 	
 	Rigidbody2D CellRigidBody = null;
 	
 	void Start ()
 	{
+		initialPosition = transform.position;
 		CellRigidBody = gameObject.GetComponent<Rigidbody2D>();
 	}
 	
@@ -23,8 +26,9 @@ public class CellMotor : MonoBehaviour {
 	
 	internal void Jump ()
 	{
-		RaycastHit2D RH = Physics2D.Raycast(new Vector2 (transform.position.x,transform.position.y - 0.5f - 0.01f),
-		                                    Vector2.down);
+		RaycastHit2D RH = Physics2D.CircleCast(new Vector2 (transform.position.x,transform.position.y - 0.5f - 0.01f),
+		                                       0.11f,
+		                                       Vector2.down);
 		if (RH.distance <= 0.01f && RH.collider != null)
 		{
 			currentJump = 0;

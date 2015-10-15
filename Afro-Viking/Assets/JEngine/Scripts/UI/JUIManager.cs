@@ -41,7 +41,7 @@ internal class JUIManager
                 if (currentShowedPanelList.Contains(panel))
                     currentShowedPanelList.Remove(panel);
                 panelDict.Remove(panelName);
-                Object.DestroyImmediate(panel.gameObject);
+                Object.Destroy(panel.gameObject);
             }
         }
     }
