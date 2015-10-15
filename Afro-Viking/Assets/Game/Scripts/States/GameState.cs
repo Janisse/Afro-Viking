@@ -19,11 +19,18 @@ public class GameState : JState
 	internal override void RegisterForEvents ()
 	{
 		base.RegisterForEvents ();
+		JEngine.Instance.eventManager.RegisterEvent("GameOver",OnGameOver);
 	}
 
 	internal override void UnregisterForEvents ()
 	{
 		base.UnregisterForEvents ();
+		JEngine.Instance.eventManager.UnregisterEvent("GameOver",OnGameOver);
+	}
+	
+	void OnGameOver(JEventArgs a_arg)
+	{
+		Debug.Log("GameOver !!!");	
 	}
 	#endregion
 

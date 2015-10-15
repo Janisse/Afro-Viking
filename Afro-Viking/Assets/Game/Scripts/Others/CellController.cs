@@ -29,7 +29,7 @@ public class CellController : MonoBehaviour
 			motors[CellMotorSelected].Jump();
 		}
 		
-		if(Input.GetKey(KeyCode.K))
+		if(Input.GetKeyDown(KeyCode.K))
 		{
 			if(motors[CellMotorSelected].Split())
 			{
@@ -39,11 +39,14 @@ public class CellController : MonoBehaviour
 			}
 		}
 		
-		if(Input.GetKey(KeyCode.L))
+		if(Input.GetKeyDown(KeyCode.L))
 		{
+			motors[CellMotorSelected].Select(false);
 			CellMotorSelected++;
 			if(CellMotorSelected == motors.Count)
 				CellMotorSelected = 0;
+				
+			motors[CellMotorSelected].Select(true);
 		}
 	}
 }

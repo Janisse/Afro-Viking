@@ -47,4 +47,9 @@ public class CellMotor : MonoBehaviour {
 		}
 		return false;
 	}
+	
+	internal void Select(bool a_selected)
+	{
+	
+	}
 }
