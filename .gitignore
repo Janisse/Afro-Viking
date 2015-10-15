@@ -1,0 +1,4 @@
+*.apk
+/JEngine/Library/ShaderCache
+/JEngine/obj
+/JEngine/Library
