@@ -1,13 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Game\Scripts\Others\Objects\Missile.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Game\Scripts\Others\CellController.cs">
     <Files>
-      <File FileName="Assets\Game\Scripts\Others\CameraMove.cs" Line="11" Column="26" />
-      <File FileName="Assets\JEngine\Scripts\Core\JState.cs" Line="1" Column="1" />
-      <File FileName="Assets\Game\Scripts\States\GameState.cs" Line="14" Column="25" />
-      <File FileName="Assets\JEngine\Scripts\Core\JGameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Game\Scripts\Others\Objects\Cannon.cs" Line="1" Column="1" />
-      <File FileName="Assets\Game\Scripts\Others\Objects\Missile.cs" Line="21" Column="45" />
+      <File FileName="Assets\Game\Scripts\Others\CellController.cs" Line="41" Column="3" />
+      <File FileName="Assets\Game\Scripts\Others\CellMotor.cs" Line="48" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

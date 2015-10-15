@@ -1,0 +1,50 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class CellMotor : MonoBehaviour {
+	
+	public int JumpMax = 2;
+	public float JumpForce = 50f;
+	public float speed = 1f;
+	public bool CanSplit = true;
+	int currentJump = 0;
+	
+	Rigidbody2D CellRigidBody = null;
+	
+	void Start ()
+	{
+		CellRigidBody = gameObject.GetComponent<Rigidbody2D>();
+	}
+	
+	internal void MoveHorizontaly(float a_horizontalSpeed)
+	{
+		transform.Translate(new Vector3(a_horizontalSpeed * speed * Time.deltaTime,0f,0f));
+	}
+	
+	internal void Jump ()
+	{
+		RaycastHit2D RH = Physics2D.Raycast(new Vector2 (transform.position.x,transform.position.y - 0.5f - 0.01f),
+		                                    Vector2.down);
+		if (RH.distance <= 0.01f && RH.collider != null)
+		{
+			currentJump = 0;
+		}
+		
+		if(currentJump < JumpMax)
+		{
+			currentJump++;
+			CellRigidBody.velocity = new Vector2 (CellRigidBody.velocity.x,0f);
+			CellRigidBody.AddForce(new Vector2 (0f , JumpForce));
+		}
+	}
+	
+	internal bool Split()
+	{
+		if(CanSplit)
+		{
+			CanSplit = false;
+			return true;
+		}
+		return false;
+	}
+}

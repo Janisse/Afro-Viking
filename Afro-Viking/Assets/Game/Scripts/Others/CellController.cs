@@ -1,21 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class CellController : MonoBehaviour {
-
-	public float speed = 1f;
-	public float JumpForce = 50f;
-	public int JumpMax = 2;
+public class CellController : MonoBehaviour
+{
+	public GameObject CellPrefab = null;
+	public List <CellMotor> motors;
+	int CellMotorSelected = 0;
 	
-	int currentJump = 0;
-	float HorizontalSpeed = 0f;
-	Rigidbody2D CellRigidBody = null;
-
-	void Start ()
-	{
-		CellRigidBody = gameObject.GetComponent<Rigidbody2D>();
-	}
-
 	void Update ()
 	{
 		InputUpdate ();
@@ -23,41 +15,35 @@ public class CellController : MonoBehaviour {
 
 	void InputUpdate()
 	{
-		if (Input.GetKey (KeyCode.Q))
+		if(Input.GetKey (KeyCode.Q))
 		{
-			HorizontalSpeed = -1f;
+			motors[CellMotorSelected].MoveHorizontaly(-1);
 		}
 		else if (Input.GetKey (KeyCode.D))
 		{
-			HorizontalSpeed = 1f;
-		} 
-		else
-		{
-			HorizontalSpeed = 0f;
+			motors[CellMotorSelected].MoveHorizontaly(1);
 		}
-		
-		transform.Translate(new Vector3(HorizontalSpeed * speed * Time.deltaTime,0f,0f));
 		
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			Jump();
-		}
-	}
-
-	void Jump ()
-	{
-		RaycastHit2D RH = Physics2D.Raycast(new Vector2 (transform.position.x,transform.position.y - 0.5f - 0.01f),
-											Vector2.down);
-		if (RH.distance <= 0.01f && RH.collider != null)
-		{
-			currentJump = 0;
+			motors[CellMotorSelected].Jump();
 		}
 		
-		if(currentJump < JumpMax)
+		if(Input.GetKey(KeyCode.K))
 		{
-			currentJump++;
-			CellRigidBody.velocity = new Vector2 (CellRigidBody.velocity.x,0f);
-			CellRigidBody.AddForce(new Vector2 (0f , JumpForce));
+			if(motors[CellMotorSelected].Split())
+			{
+				Object newCell = Instantiate(CellPrefab as Object);
+				motors.Add((newCell as GameObject).GetComponent<CellMotor>());
+				CellMotorSelected = motors.Count-1;
+			}
+		}
+		
+		if(Input.GetKey(KeyCode.L))
+		{
+			CellMotorSelected++;
+			if(CellMotorSelected == motors.Count)
+				CellMotorSelected = 0;
 		}
 	}
 }
