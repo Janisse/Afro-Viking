@@ -5,9 +5,9 @@ public class CellController : MonoBehaviour {
 
 	public float speed = 1f;
 	public float JumpForce = 50f;
+	public int JumpMax = 2;
 	
-	bool Jump = false;
-	bool Fire = false;
+	int currentJump = 0;
 	float HorizontalSpeed = 0f;
 	Rigidbody2D CellRigidBody = null;
 
@@ -19,7 +19,6 @@ public class CellController : MonoBehaviour {
 	void Update ()
 	{
 		InputUpdate ();
-		MoveUpdate ();
 	}
 
 	void InputUpdate()
@@ -37,31 +36,28 @@ public class CellController : MonoBehaviour {
 			HorizontalSpeed = 0f;
 		}
 		
+		transform.Translate(new Vector3(HorizontalSpeed * speed * Time.deltaTime,0f,0f));
+		
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			Jump = true;
+			Jump();
 		}
-		
-		if (Input.GetKey (KeyCode.J))
-		{
-			Fire = true;
-		} 
 	}
 
-	void MoveUpdate ()
+	void Jump ()
 	{
-		transform.Translate(new Vector3(HorizontalSpeed * speed * Time.deltaTime,0f,0f));
-
-		if(Jump)
+		RaycastHit2D RH = Physics2D.Raycast(new Vector2 (transform.position.x,transform.position.y - 0.5f - 0.01f),
+											Vector2.down);
+		if (RH.distance <= 0.01f && RH.collider != null)
 		{
-			RaycastHit2D RH = Physics2D.Raycast(new Vector2 (transform.position.x,transform.position.y - 0.5f - 0.01f),
-												Vector2.down);
-			if (RH.distance <= 0.01f && RH.collider != null)
-			{
-				CellRigidBody.AddForce(new Vector2 (0f , JumpForce));
-			}
-			
-			Jump = false;
+			currentJump = 0;
+		}
+		
+		if(currentJump < JumpMax)
+		{
+			currentJump++;
+			CellRigidBody.velocity = new Vector2 (CellRigidBody.velocity.x,0f);
+			CellRigidBody.AddForce(new Vector2 (0f , JumpForce));
 		}
 	}
 }
