@@ -11,7 +11,7 @@ public class GameState : JState
 	internal override void Enter ()
 	{
 		base.Enter ();
-		LoadLevel ("Level2");
+		LoadLevel ("Level 1");
 	}
 	#endregion
 

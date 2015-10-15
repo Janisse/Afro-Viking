@@ -6,6 +6,7 @@ public class Cannon : MonoBehaviour
 	#region Properties
 	public Transform fireSpot = null;
 	public float fireRate = 1f;
+	public float delayStart = 0f;
 	public Missile missilePrefab = null;
 	public float missileSpeed = 1f;
 	public bool isOn = true;
@@ -14,18 +15,35 @@ public class Cannon : MonoBehaviour
 	#endregion
 
 	#region GameObject Methods	
-	// Update is called once per frame
+	void Start()
+	{
+		if(isOn)
+		{
+			ActivateCannon(isOn);
+		}
+	}
+
 	void Update ()
 	{
-		nextMissileTime -= Time.deltaTime;
-		if(nextMissileTime <= 0f)
+		if(isOn)
 		{
-			FireMissile();
+			nextMissileTime -= Time.deltaTime;
+			if(nextMissileTime <= 0f)
+			{
+				FireMissile();
+			}
 		}
 	}
 	#endregion
 
 	#region Methods
+	internal void ActivateCannon(bool a_isOn)
+	{
+		isOn = a_isOn;
+		if(isOn)
+			nextMissileTime = fireRate + delayStart;
+	}
+
 	internal void FireMissile()
 	{
 		nextMissileTime = fireRate;

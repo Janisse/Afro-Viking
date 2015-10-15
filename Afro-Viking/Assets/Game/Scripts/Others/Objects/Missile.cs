@@ -18,5 +18,6 @@ public class Missile : MonoBehaviour {
 	void Update ()
 	{
 		transform.position += dir * Time.deltaTime * speed;
+		transform.Rotate (new Vector3(0f, 0f, 360f * Time.deltaTime));
 	}
 }
