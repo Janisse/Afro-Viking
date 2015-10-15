@@ -9,6 +9,7 @@ public class Cannon : MonoBehaviour
 	public float delayStart = 0f;
 	public Missile missilePrefab = null;
 	public float missileSpeed = 1f;
+	public float missileLifeTime = 5f;
 	public bool isOn = true;
 
 	private float nextMissileTime = 0f;
@@ -51,6 +52,7 @@ public class Cannon : MonoBehaviour
 		newMissile.transform.position = fireSpot.position;
 		newMissile.dir = fireSpot.forward;
 		newMissile.speed = missileSpeed;
+		newMissile.lifeTime = missileLifeTime;
 	}
 	#endregion
 }
