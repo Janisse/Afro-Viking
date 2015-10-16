@@ -6,12 +6,18 @@ public class GameButton : MonoBehaviour {
 	public AActivable Button = null;
 	public AActivable Activable = null;
 	
+	int HowManyEnter = 0;
+	
 	void OnCollisionEnter2D(Collision2D a_collider)
 	{
 		if (a_collider.gameObject.tag == "Player")
 		{
-			Button.Activate(true);
-			Activable.Activate(true);
+			HowManyEnter ++;
+			if(HowManyEnter == 1)
+			{
+				Button.Activate(true);
+				Activable.Activate(true);
+			}
 		}
 	}
 	
@@ -19,8 +25,13 @@ public class GameButton : MonoBehaviour {
 	{
 		if (a_collider.gameObject.tag == "Player")
 		{
-			Button.Activate(false);
-			Activable.Activate(false);
+			HowManyEnter --;
+			
+			if(HowManyEnter == 0)
+			{
+				Button.Activate(false);
+				Activable.Activate(false);
+			}
 		}
 	}
 }

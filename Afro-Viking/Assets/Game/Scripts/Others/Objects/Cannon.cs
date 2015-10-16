@@ -4,7 +4,7 @@ using System.Collections;
 public class Cannon : MonoBehaviour
 {
 	#region Properties
-	public GameObject CanonFermé = null;
+	public GameObject CanonFerme = null;
 	public GameObject CanonOuvert = null;
 	
 	public Transform fireSpot = null;
