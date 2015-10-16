@@ -5,7 +5,7 @@ using System.Collections.Generic;
 internal class JGameManager
 {
     #region Properties
-	internal int currentLevelID = 1;
+	internal int currentLevelID = 3;
 
     private List<string> _gameModeList = null;
     private JGameMode _currentGameMode = null;

@@ -32,7 +32,7 @@ public class CellController : MonoBehaviour
 		
 		if(Input.GetKeyDown(KeyCode.K))
 		{
-			if(motors[CellMotorSelected].Split())
+			if(motors[CellMotorSelected].Split() && motors.Count < 2)
 			{
 				Object newCell = Instantiate(CellPrefab as Object,motors[CellMotorSelected].transform.position + new Vector3(0.1f,0f,0f),Quaternion.identity);
 				motors.Add((newCell as GameObject).GetComponent<CellMotor>());
