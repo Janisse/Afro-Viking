@@ -4,6 +4,9 @@ using System.Collections;
 public class Cannon : MonoBehaviour
 {
 	#region Properties
+	public GameObject CanonFermé = null;
+	public GameObject CanonOuvert = null;
+	
 	public Transform fireSpot = null;
 	public float fireRate = 1f;
 	public float delayStart = 0f;
@@ -13,6 +16,7 @@ public class Cannon : MonoBehaviour
 	public bool isOn = true;
 
 	private float nextMissileTime = 0f;
+	private float closeCanon = 0f;
 	#endregion
 
 	#region GameObject Methods	
@@ -28,11 +32,23 @@ public class Cannon : MonoBehaviour
 	{
 		if(isOn)
 		{
+			
+			if(closeCanon <= 0f)
+			{
+				CanonFermé.SetActive(true);
+				CanonOuvert.SetActive(false);
+			}
+			else
+			{
+				closeCanon -= Time.deltaTime;
+			}
+			
 			nextMissileTime -= Time.deltaTime;
 			if(nextMissileTime <= 0f)
 			{
 				FireMissile();
 			}
+			
 		}
 	}
 	#endregion
@@ -47,6 +63,10 @@ public class Cannon : MonoBehaviour
 
 	internal void FireMissile()
 	{
+		CanonFermé.SetActive(false);
+		CanonOuvert.SetActive(true);
+		closeCanon = 0.5f;
+		
 		nextMissileTime = fireRate;
 		Missile newMissile = (Missile)Instantiate (missilePrefab);
 		newMissile.transform.position = fireSpot.position;
