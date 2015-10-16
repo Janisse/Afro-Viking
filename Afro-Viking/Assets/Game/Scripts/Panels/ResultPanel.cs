@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class ResultPanel : JPanel
 {
 	#region Properties
 	public GameObject winPopup = null;
 	public GameObject loosePopup = null;
+	public Text deathText = null;
 	#endregion
 
 	#region Methods
@@ -27,6 +29,11 @@ public class ResultPanel : JPanel
 	{
 		winPopup.SetActive(false);
 		loosePopup.SetActive(false);
+	}
+
+	internal void SetDeathText(string a_text)
+	{
+		deathText.text = a_text;
 	}
 	#endregion
 }
