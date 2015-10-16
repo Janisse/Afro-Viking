@@ -35,7 +35,7 @@ public class Cannon : MonoBehaviour
 			
 			if(closeCanon <= 0f)
 			{
-				CanonFermé.SetActive(true);
+				CanonFerme.SetActive(true);
 				CanonOuvert.SetActive(false);
 			}
 			else
@@ -63,7 +63,7 @@ public class Cannon : MonoBehaviour
 
 	internal void FireMissile()
 	{
-		CanonFermé.SetActive(false);
+		CanonFerme.SetActive(false);
 		CanonOuvert.SetActive(true);
 		closeCanon = 0.5f;
 		
