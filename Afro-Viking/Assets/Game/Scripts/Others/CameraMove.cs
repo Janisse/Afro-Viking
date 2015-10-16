@@ -8,6 +8,6 @@ public class CameraMove : MonoBehaviour
 
 	void Update ()
 	{
-		transform.position = new Vector3(playerPos.position.x + offsetX, transform.position.y, transform.position.z);
+		transform.position += (new Vector3(playerPos.position.x + offsetX, transform.position.y, transform.position.z) - transform.position) * Time.deltaTime;
 	}
 }

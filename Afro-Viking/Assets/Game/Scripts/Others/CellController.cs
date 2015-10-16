@@ -6,6 +6,7 @@ public class CellController : MonoBehaviour
 {
 	public GameObject CellPrefab = null;
 	public List <CellMotor> motors;
+	public CameraMove cameraMove = null;
 	int CellMotorSelected = 0;
 	
 	void Update ()
@@ -36,6 +37,8 @@ public class CellController : MonoBehaviour
 				Object newCell = Instantiate(CellPrefab as Object);
 				motors.Add((newCell as GameObject).GetComponent<CellMotor>());
 				CellMotorSelected = motors.Count-1;
+				motors[CellMotorSelected].Select(true);
+				cameraMove.playerPos = motors[CellMotorSelected].transform;
 			}
 		}
 		
@@ -47,6 +50,7 @@ public class CellController : MonoBehaviour
 				CellMotorSelected = 0;
 				
 			motors[CellMotorSelected].Select(true);
+			cameraMove.playerPos = motors[CellMotorSelected].transform;
 		}
 	}
 }
