@@ -45,6 +45,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Game\Scripts\Others\Button\AActivable.cs" />
+     <Compile Include="Assets\Game\Scripts\Others\Button\GameButton.cs" />
+     <Compile Include="Assets\Game\Scripts\Others\Button\TranslateActivable.cs" />
      <Compile Include="Assets\Game\Scripts\Others\CameraMove.cs" />
      <Compile Include="Assets\Game\Scripts\Others\CellController.cs" />
      <Compile Include="Assets\Game\Scripts\Others\CellMotor.cs" />
