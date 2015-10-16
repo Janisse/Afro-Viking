@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameState : JState
 {
+	public AudioClip Death = null;
+	public AudioClip Win = null;
 	#region Properties
 	private ResultPanel _resultPanel = null;
 	#endregion
@@ -37,6 +39,7 @@ public class GameState : JState
 	
 	void OnGameOver(JEventArgs a_arg)
 	{
+		JEngine.Instance.audioManager.PlaySound2D(Death);
 		Time.timeScale = 0f;
 		_resultPanel.DisplayPopup (false);	
 	}
@@ -48,6 +51,7 @@ public class GameState : JState
 
 	void OnNextLevel(JEventArgs a_arg)
 	{
+		JEngine.Instance.audioManager.PlaySound2D(Win);
 		JEngine.Instance.gameManager.currentLevelID++;
 		JEngine.Instance.gameManager.changeGameMode ("CellGameMode");
 	}
