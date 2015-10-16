@@ -7,7 +7,7 @@ public class Finish : MonoBehaviour
 	{
 		if(a_collider.gameObject.tag == "Player")
 		{
-			JEngine.Instance.eventManager.FireEvent("OnNextLevel");
+			JEngine.Instance.eventManager.FireEvent("OnWin");
 		}
 	}
 }

@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameState : JState
 {
+	public AudioClip Death = null;
+	public AudioClip Win = null;
 	#region Properties
 	private ResultPanel _resultPanel = null;
 	#endregion
@@ -35,6 +37,7 @@ public class GameState : JState
 		JEngine.Instance.eventManager.RegisterEvent("GameOver", OnGameOver);
 		JEngine.Instance.eventManager.RegisterEvent("OnRestart", OnRestart);
 		JEngine.Instance.eventManager.RegisterEvent("OnNextLevel", OnNextLevel);
+		JEngine.Instance.eventManager.RegisterEvent("OnWin", OnWin);
 	}
 
 	internal override void UnregisterForEvents ()
@@ -43,12 +46,14 @@ public class GameState : JState
 		JEngine.Instance.eventManager.UnregisterEvent("GameOver", OnGameOver);
 		JEngine.Instance.eventManager.UnregisterEvent("OnRestart", OnRestart);
 		JEngine.Instance.eventManager.UnregisterEvent("OnNextLevel", OnNextLevel);
+		JEngine.Instance.eventManager.UnregisterEvent("OnWin", OnWin);
 	}
 	
 	void OnGameOver(JEventArgs a_arg)
 	{
+		JEngine.Instance.audioManager.PlaySound2D(Death);
 		Time.timeScale = 0f;
-		_resultPanel.DisplayPopup (false);	
+		_resultPanel.DisplayPopup (false);
 	}
 
 	void OnRestart(JEventArgs a_arg)
@@ -62,6 +67,13 @@ public class GameState : JState
 	{
 		JEngine.Instance.gameManager.currentLevelID++;
 		JEngine.Instance.gameManager.changeGameMode ("CellGameMode");
+	}
+	
+	void OnWin(JEventArgs a_arg)
+	{
+		JEngine.Instance.audioManager.PlaySound2D(Win);
+		Time.timeScale = 0f;
+		_resultPanel.DisplayPopup (true);
 	}
 	#endregion
 
