@@ -16,6 +16,7 @@ public class GameState : JState
 		LoadLevel ("Level " + JEngine.Instance.gameManager.currentLevelID);
 
 		_resultPanel = (ResultPanel)JEngine.Instance.uiManager.GetPanel ("ResultPanel");
+		_resultPanel.SetDeathText (JEngine.Instance.gameManager.deathNb.ToString());
 		Time.timeScale = 1f;
 	}
 	#endregion
@@ -46,6 +47,8 @@ public class GameState : JState
 
 	void OnRestart(JEventArgs a_arg)
 	{
+		JEngine.Instance.gameManager.deathNb++;
+		_resultPanel.SetDeathText (JEngine.Instance.gameManager.deathNb.ToString());
 		JEngine.Instance.gameManager.changeGameMode ("CellGameMode");
 	}
 
