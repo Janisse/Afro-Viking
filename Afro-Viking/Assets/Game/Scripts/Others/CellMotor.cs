@@ -8,14 +8,11 @@ public class CellMotor : MonoBehaviour {
 	public float speed = 1f;
 	public bool CanSplit = true;
 	int currentJump = 0;
-
-	private Vector3 initialPosition = Vector3.zero;
 	
 	Rigidbody2D CellRigidBody = null;
 	
 	void Start ()
 	{
-		initialPosition = transform.position;
 		CellRigidBody = gameObject.GetComponent<Rigidbody2D>();
 	}
 	
