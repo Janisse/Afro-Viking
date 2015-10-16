@@ -33,7 +33,7 @@ public class CellController : MonoBehaviour
 		{
 			if(motors[CellMotorSelected].Split())
 			{
-				Object newCell = Instantiate(CellPrefab as Object);
+				Object newCell = Instantiate(CellPrefab as Object,motors[CellMotorSelected].transform.position + new Vector3(0.1f,0f,0f),Quaternion.identity);
 				motors.Add((newCell as GameObject).GetComponent<CellMotor>());
 				CellMotorSelected = motors.Count-1;
 			}
