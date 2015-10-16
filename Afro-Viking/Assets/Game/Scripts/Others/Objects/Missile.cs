@@ -12,7 +12,8 @@ public class Missile : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
 	{
-		Destroy (gameObject, lifeTime);
+		if(lifeTime > 0)
+			Destroy (gameObject, lifeTime);
 	}
 	
 	// Update is called once per frame

@@ -7,6 +7,7 @@ public class CellMotor : MonoBehaviour {
 	public float JumpForce = 50f;
 	public float speed = 1f;
 	public bool CanSplit = true;
+	public GameObject smokePrefab = null;
 	int currentJump = 0;
 	
 	Rigidbody2D CellRigidBody = null;
@@ -36,6 +37,9 @@ public class CellMotor : MonoBehaviour {
 			currentJump++;
 			CellRigidBody.velocity = new Vector2 (CellRigidBody.velocity.x,0f);
 			CellRigidBody.AddForce(new Vector2 (0f , JumpForce));
+			GameObject obj = Instantiate(smokePrefab);
+			obj.transform.position = transform.position - Vector3.up * 0.3f;
+			Destroy(obj, 2f);
 		}
 	}
 	
