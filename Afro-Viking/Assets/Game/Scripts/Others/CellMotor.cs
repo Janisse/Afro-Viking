@@ -6,7 +6,12 @@ public class CellMotor : MonoBehaviour {
 	public int JumpMax = 2;
 	public float JumpForce = 50f;
 	public float speed = 1f;
+	public float speedSprint = 4f;
+	
 	public bool CanSplit = true;
+	public bool CanJump = true;
+	public bool CanSprint = true;
+
 	public GameObject smokePrefab = null;
 	int currentJump = 0;
 	
@@ -19,7 +24,10 @@ public class CellMotor : MonoBehaviour {
 	
 	internal void MoveHorizontaly(float a_horizontalSpeed)
 	{
-		transform.Translate(new Vector3(a_horizontalSpeed * speed * Time.deltaTime,0f,0f));
+		float aSpeed = speed;
+		if (Input.GetKey (KeyCode.LeftShift) && CanSprint)
+			aSpeed = speedSprint;
+		transform.Translate(new Vector3(a_horizontalSpeed * aSpeed * Time.deltaTime,0f,0f));
 	}
 	
 	internal void Jump ()
@@ -32,7 +40,7 @@ public class CellMotor : MonoBehaviour {
 			currentJump = 0;
 		}
 		
-		if(currentJump < JumpMax)
+		if(currentJump < JumpMax && CanJump)
 		{
 			currentJump++;
 			CellRigidBody.velocity = new Vector2 (CellRigidBody.velocity.x,0f);
