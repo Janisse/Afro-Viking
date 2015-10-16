@@ -11,9 +11,18 @@ public class GameState : JState
 	internal override void Enter ()
 	{
 		base.Enter ();
-		LoadLevel ("Level " + JEngine.Instance.gameManager.currentLevelID);
-
 		_resultPanel = (ResultPanel)JEngine.Instance.uiManager.GetPanel ("ResultPanel");
+
+		if(JEngine.Instance.gameManager.currentLevelID < 6)
+		{
+			LoadLevel ("Level " + JEngine.Instance.gameManager.currentLevelID);
+		}
+		else
+		{
+			_resultPanel.SetScore("Bravo, tu as finis le jeu en étant mort " + JEngine.Instance.gameManager.deathNb.ToString() + " fois !");
+
+		}
+
 		_resultPanel.SetDeathText (JEngine.Instance.gameManager.deathNb.ToString());
 		Time.timeScale = 1f;
 	}
