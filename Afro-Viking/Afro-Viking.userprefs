@@ -1,22 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\JEngine\Scripts\Core\JGameManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Game\Scripts\Others\Button\GameButton.cs">
     <Files>
-      <File FileName="Assets\Game\Scripts\States\GameState.cs" Line="4" Column="32" />
-      <File FileName="Assets\Game\Scripts\Others\CameraMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\JEngine\Scripts\Core\JState.cs" Line="1" Column="1" />
-      <File FileName="Assets\JEngine\Scripts\Core\JGameManager.cs" Line="25" Column="2" />
-      <File FileName="Assets\Game\Scripts\Others\Objects\Cannon.cs" Line="61" Column="22" />
-      <File FileName="Assets\Game\Scripts\Others\Objects\Missile.cs" Line="1" Column="1" />
-      <File FileName="Assets\Game\Scripts\Panels\ResultPanel.cs" Line="1" Column="1" />
-      <File FileName="Assets\JEngine\Scripts\UI\JPanel.cs" Line="1" Column="1" />
-      <File FileName="Assets\Game\Scripts\Others\CellMotor.cs" Line="22" Column="58" />
+      <File FileName="Assets\Game\Scripts\Others\Button\GameButton.cs" Line="34" Column="5" />
+      <File FileName="Assets\Game\Scripts\Others\Button\AActivable.cs" Line="1" Column="1" />
+      <File FileName="Assets\Game\Scripts\Others\Button\TranslateActivable.cs" Line="1" Column="1" />
+      <File FileName="Assets\Game\Scripts\Others\CellMotor.cs" Line="1" Column="1" />
       <File FileName="Assets\Game\Scripts\Others\CellController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Game\Scripts\Others\Finish.cs" Line="1" Column="1" />
+      <File FileName="Assets\Game\Scripts\Others\Objects\Cannon.cs" Line="64" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Kanod_000\Desktop\Afro-Viking\Afro-Viking\Assets\Game\Scripts\Others\Button\GameButton.cs" line="18" />
+      <Breakpoint file="C:\Users\Kanod_000\Desktop\Afro-Viking\Afro-Viking\Assets\Game\Scripts\Others\Button\GameButton.cs" line="13" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

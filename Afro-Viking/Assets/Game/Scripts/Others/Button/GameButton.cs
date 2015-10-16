@@ -4,7 +4,7 @@ using System.Collections;
 public class GameButton : MonoBehaviour {
 
 	public AActivable Button = null;
-	public AActivable Activable = null;
+	public AActivable[] Activable = null;
 	
 	int HowManyEnter = 0;
 	
@@ -16,7 +16,8 @@ public class GameButton : MonoBehaviour {
 			if(HowManyEnter == 1)
 			{
 				Button.Activate(true);
-				Activable.Activate(true);
+				for(int i = 0 ; i< Activable.Length ; ++i)
+					Activable[i].Activate(true);
 			}
 		}
 	}
@@ -30,7 +31,8 @@ public class GameButton : MonoBehaviour {
 			if(HowManyEnter == 0)
 			{
 				Button.Activate(false);
-				Activable.Activate(false);
+				for(int i = 0 ; i< Activable.Length ; ++i)
+					Activable[i].Activate(false);
 			}
 		}
 	}

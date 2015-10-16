@@ -30,25 +30,23 @@ public class Cannon : MonoBehaviour
 
 	void Update ()
 	{
+		if(closeCanon <= 0f)
+		{
+			CanonFerme.SetActive(true);
+			CanonOuvert.SetActive(false);
+		}
+		else
+		{
+			closeCanon -= Time.deltaTime;
+		}
+		
 		if(isOn)
 		{
-			
-			if(closeCanon <= 0f)
-			{
-				CanonFerme.SetActive(true);
-				CanonOuvert.SetActive(false);
-			}
-			else
-			{
-				closeCanon -= Time.deltaTime;
-			}
-			
 			nextMissileTime -= Time.deltaTime;
 			if(nextMissileTime <= 0f)
 			{
 				FireMissile();
 			}
-			
 		}
 	}
 	#endregion
