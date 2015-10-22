@@ -10,6 +10,7 @@ public class ResultPanel : JPanel
 	public GameObject scorePopup = null;
 	public Text deathText = null;
 	public Text scoreText = null;
+	public Text winText = null;
 	#endregion
 
 	#region Methods
@@ -42,6 +43,11 @@ public class ResultPanel : JPanel
 	{
 		scorePopup.SetActive (true);
 		scoreText.text = a_text;
+	}
+
+	internal void SetWinText(string a_text)
+	{
+		winText.text = a_text;
 	}
 	#endregion
 }
